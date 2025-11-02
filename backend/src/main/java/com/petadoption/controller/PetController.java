@@ -94,10 +94,11 @@ public class PetController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getPetById(@PathVariable Long id) {
+    public ResponseEntity<Object> getPetById(@PathVariable Long id) {
         return petService.getPetById(id)
                 .map(pet -> ResponseEntity.ok(pet))
                 .orElse(ResponseEntity.status(HttpStatus.NOT_FOUND)
                         .body(Map.of("error", "Pet not found")));
     }
 }
+
